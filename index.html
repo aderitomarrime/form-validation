@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="/assets/main.js" defer></script>
+</head>
+<body>
+    <form action="" novalidate>
+        <h1>Form</h1>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="country">
+            <label for="country">Country</label>
+            <select name="country" id="country">
+                <option value="fr">France</option>
+                <option value="po">Portugal</option>
+                <option value="so">Spain</option>
+            </select>
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="postal">
+            <label for="postal">Postal code</label>
+            <input type="text" name="postal" id="postal">
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="password-confirmation">
+            <label for="passconf">Password confirmation</label>
+            <input type="password" name="passconf" id="passconf">
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Submit" name="submit" id="submit">
+        </div>
+    </form>
+</body>
+</html>
