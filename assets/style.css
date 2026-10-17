@@ -1,8 +1,8 @@
 :root {
 
   /*font family*/
-  --default-font-family: "Playfair Display", serif;
-  --font-heading: "Source Serif 4", serif;
+  --default-font-family: "Source Serif 4", serif;
+  --font-heading: "Playfair Display", serif;
 
   /* font-size (typescale 1.25) */
   --fs-xs: 0.625rem;
@@ -176,6 +176,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--gray-blue);
+  padding: calc(var(--spacing)*4);
 }
 
 h1, h2, h3, h4, h5, h6 {
