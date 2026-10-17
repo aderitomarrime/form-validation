@@ -99,6 +99,7 @@
   --gray-bluish:#E2E8F0;
   --gray-lead:#424242;
   --gray-graphite:#212121;
+  --gray-blue: #e2e8f0;
 
   --txt-black: #1a1a1a;
   --txt-white: #e5e6eb;
@@ -171,8 +172,111 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: var(--default-font-family);
   min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray-blue);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+}
+
+form {
+    padding: calc(var(--spacing)*6);
+    background-color: var(--white-total);
+    border-radius: var(--br-2xl);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing)*4);
+    width: 100%;
+    max-width: var(--container-sm);
+}
+
+form .title h1 {
+    font-size: var(--fs-2xl);
+    line-height: var(--lh-2xl);
+    font-weight: var(var(--fw-semi-bold));
+    letter-spacing: var(--ls-2xl);
+    color: var(--txt-black);
+}
+
+form .controllers {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing)*2);
+}
+
+form .controllers div:not(.join) {
+    display: grid;
+    grid-auto-rows: min-content;
+}
+
+form .controllers .join {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    column-gap: calc(var(--spacing)*4);
+}
+
+form .controllers .join div {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+}
+
+form .controllers .join div * {
+    grid-row: span 1;
+}
+
+form .controllers label {
+    font-size: var(--fs-sm);
+    line-height: var(--lh-sm);
+    font-weight: var(var(--fw-bold));
+    letter-spacing: var(--ls-sm);
+    color: var(--txt-black);
+    margin-bottom: calc(var(--spacing)*1);
+}
+
+form .controllers select {
+    background-color: transparent;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-sm);
+    font-weight: var(var(--fw-bold));
+    letter-spacing: var(--ls-sm);
+    opacity: 0.8;
+}
+
+form .controllers input, select {
+    border: 1px solid var(--border);
+    border-radius: var(--br-lg);
+    padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
+    cursor: pointer;
+}
+
+form .controllers input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--teal);
+    border: none;
+}
+
+form .submit input {
+    width: var(--container-full);
+    border: none;
+    background-color: var(--dark-teal);
+    color: var(--white);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-lg);
+    font-weight: var(var(--fw-bold));
+    letter-spacing: var(--ls-lg);
+    padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
+    border-radius: var(--br-lg);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+form .submit input:hover {
+    transform: translateY(-1.5px);
+    background-color: #245665;
 }

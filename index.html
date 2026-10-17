@@ -12,36 +12,48 @@
 </head>
 <body>
     <form action="" novalidate>
-        <h1>Form</h1>
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <span class="error" aria-live="polite"></span>
+        <div class="title">
+            <h1>Form Validation</h1>
         </div>
-        <div class="country">
-            <label for="country">Country</label>
-            <select name="country" id="country">
-                <option value="fr">France</option>
-                <option value="po">Portugal</option>
-                <option value="so">Spain</option>
-            </select>
-            <span class="error" aria-live="polite"></span>
+
+        <div class="controllers">
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <span class="error" aria-live="polite"></span>
+            </div>
+
+            <div class="join">
+                <div class="country">
+                    <label for="country">Country</label>
+                    <select name="country" id="country">
+                        <option value="">--Select a country--</option>
+                        <option value="fr">France</option>
+                        <option value="po">Portugal</option>
+                        <option value="so">Spain</option>
+                    </select>
+                    <span class="error" aria-live="polite"></span>
+                </div>
+                <div class="postal">
+                    <label for="postal">Postal code</label>
+                    <input type="text" name="postal" id="postal">
+                    <span class="error" aria-live="polite"></span>
+                </div>
+            </div>
+
+            <div class="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <span class="error" aria-live="polite"></span>
+            </div>
+
+            <div class="password-confirmation">
+                <label for="passconf">Password confirmation</label>
+                <input type="password" name="passconf" id="passconf">
+                <span class="error" aria-live="polite"></span>
+            </div>
         </div>
-        <div class="postal">
-            <label for="postal">Postal code</label>
-            <input type="text" name="postal" id="postal">
-            <span class="error" aria-live="polite"></span>
-        </div>
-        <div class="password">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <span class="error" aria-live="polite"></span>
-        </div>
-        <div class="password-confirmation">
-            <label for="passconf">Password confirmation</label>
-            <input type="password" name="passconf" id="passconf">
-            <span class="error" aria-live="polite"></span>
-        </div>
+       
         <div class="submit">
             <input type="submit" value="Submit" name="submit" id="submit">
         </div>
