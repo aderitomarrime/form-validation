@@ -9,7 +9,7 @@ class FormValidation {
     }
 
     static checkMisMatch(element) {
-        if(element.validity.typeMisMatch){
+        if(element.validity.typeMismatch){
             return true;
         }else {
             return false;
