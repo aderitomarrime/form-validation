@@ -45,8 +45,18 @@ class DomManipulation {
                     }else if (FormValidation.checkLength(element.target)){
                         this.displayErrorMessage(element.target, element.target.dataset.short);
                     }else{
-                        console.log(FormValidation.checkMisMatch(element.target))
                         this.removeErrorMessage(element.target);
+                    }
+
+                    if(element.target.id == "passconf") {
+                        const password = document.querySelector("input[id='password']").value;
+
+                        if(FormValidation.checkPassValues(password, element.target.value)){
+                            this.removeErrorMessage(element.target);
+                        }else{
+                            this.displayErrorMessage(element.target, element.target.dataset.different);
+                        }
+                        
                     }
                 }
             })
