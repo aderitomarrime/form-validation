@@ -25,12 +25,43 @@ class DomManipulation {
 
                 //check text input
                 }else if(element.target.type == "text") {
+                    if(select.value == ""){
+                        this.displayErrorMessage(select, select.dataset.invalid);
+                    }else{
+                        this.removeErrorMessage(select)
 
+                        let result = FormValidation.checkPostalCode(select, element.target);
+
+                        if(result != true) {
+                            this.displayErrorMessage(element.target, result)
+                        }else{
+                            this.removeErrorMessage(element.target)
+                        }
+                    }
                 //check password input
                 }else {
 
                 }
             })
+        })
+
+        select.addEventListener("change", (element)=>{
+            if(element.target.value == ""){
+                this.displayErrorMessage(select, select.dataset.invalid);
+            }else{
+                this.removeErrorMessage(select)
+
+                const inputElement = document.querySelector("input[type='text']");
+                let result = FormValidation.checkPostalCode(select, inputElement);
+
+                if(inputElement.value.length > 0) {
+                    if(result != true) {
+                        this.displayErrorMessage(inputElement, result)
+                    }else{
+                        this.removeErrorMessage(inputElement)
+                    }
+                }
+            }
         })
     }
 
