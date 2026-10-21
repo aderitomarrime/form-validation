@@ -53,12 +53,13 @@ class DomManipulation {
         })
 
         select.addEventListener("change", (element)=>{
+            const inputElement = document.querySelector("input[type='text']");
             if(element.target.value == ""){
                 this.displayErrorMessage(select, select.dataset.invalid);
+                this.removeErrorMessage(inputElement)
             }else{
                 this.removeErrorMessage(select)
 
-                const inputElement = document.querySelector("input[type='text']");
                 let result = FormValidation.checkPostalCode(select, inputElement);
 
                 if(inputElement.value.length > 0) {
