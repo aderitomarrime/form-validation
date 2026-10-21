@@ -40,7 +40,14 @@ class DomManipulation {
                     }
                 //check password input
                 }else {
-
+                    if(FormValidation.checkRequired(element.target)) {
+                        this.displayErrorMessage(element.target, element.target.dataset.required);
+                    }else if (FormValidation.checkLength(element.target)){
+                        this.displayErrorMessage(element.target, element.target.dataset.short);
+                    }else{
+                        console.log(FormValidation.checkMisMatch(element.target))
+                        this.removeErrorMessage(element.target);
+                    }
                 }
             })
         })
