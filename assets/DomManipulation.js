@@ -72,9 +72,11 @@ class DomManipulation {
 
                         if(FormValidation.checkPassValues(password, input.value)){
                             this.removeErrorMessage(input);
+                            event.target.className = "green-border";
                             result = false;
                         }else{
                             this.displayErrorMessage(input, input.dataset.different);
+                            event.target.className = "red-border";
                             result = true;
                         }
                     } 
@@ -145,8 +147,10 @@ class DomManipulation {
                 if(FormValidation.checkPassValues(password, event.target.value)){
                     this.removeErrorMessage(event.target);
                     result = false;
+                    event.target.className = "green-border";
                 }else{
                     this.displayErrorMessage(event.target, event.target.dataset.different);
+                    event.target.className = "red-border";
                     result = true;
                 }
             } 

@@ -266,7 +266,7 @@ form .controllers input:focus, select:focus {
 form .controllers .red-border,
 form input[type="email"]:user-invalid,
 form input[type="password"]:user-invalid {
-  box-shadow: 0 0 0 1px var(--red);
+  box-shadow: 0 0 0 1px var(--red) !important;
   border: none;
 }
 
