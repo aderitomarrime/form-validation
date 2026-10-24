@@ -114,6 +114,7 @@ class DomManipulation {
         }else if(event.target.type == "text") {
             if(select.value == ""){
                 this.displayErrorMessage(select, select.dataset.invalid);
+                event.target.className = "";
                 result = true;
             }else{
                 this.removeErrorMessage(select)
@@ -122,9 +123,11 @@ class DomManipulation {
 
                 if(validation != true) {
                     this.displayErrorMessage(event.target, validation)
+                    event.target.className = "red-border";
                     result = true;
                 }else{
                     this.removeErrorMessage(event.target)
+                    event.target.className = "green-border";
                     result = false;
                 }
             }
@@ -160,16 +163,21 @@ class DomManipulation {
         if(event.target.value == ""){
             this.displayErrorMessage(select, select.dataset.invalid);
             this.removeErrorMessage(inputElement)
+            select.className = "red-border";
+            inputElement.className = "";
         }else{
             this.removeErrorMessage(select)
+            select.className = "green-border";
 
             let result = FormValidation.checkPostalCode(select, inputElement);
 
             if(inputElement.value.length > 0) {
                 if(result != true) {
                     this.displayErrorMessage(inputElement, result)
+                    inputElement.className = "red-border";
                 }else{
                     this.removeErrorMessage(inputElement)
+                    inputElement.className = "green-border";
                 }
             }
         }

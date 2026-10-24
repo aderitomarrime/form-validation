@@ -86,6 +86,7 @@
   --white: #FFF6F6;
   --teal: #8CC7C4;
   --dark-teal: #2C687B;
+  --green: rgb(30, 172, 30);
 
   --white-total:#FFFFFF;
   --white-soft:#FAFAFA;
@@ -184,15 +185,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 form {
-    padding: calc(var(--spacing)*6);
-    background-color: var(--white-total);
-    border-radius: var(--br-2xl);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--spacing)*4);
-    width: 100%;
-    max-width: var(--container-sm);
+  padding: calc(var(--spacing)*6);
+  background-color: var(--white-total);
+  border-radius: var(--br-2xl);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing)*4);
+  width: 100%;
+  max-width: var(--container-sm);
 }
 
 form .title h1 {
@@ -204,80 +205,130 @@ form .title h1 {
 }
 
 form .controllers {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--spacing)*2);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing)*2);
 }
 
 form .controllers div:not(.join) {
-    display: grid;
-    grid-auto-rows: min-content;
+  display: grid;
+  grid-auto-rows: min-content;
 }
 
 form .controllers .join {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto auto auto;
-    column-gap: calc(var(--spacing)*4);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto;
+  column-gap: calc(var(--spacing)*4);
 }
 
 form .controllers .join div {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
 }
 
 form .controllers .join div * {
-    grid-row: span 1;
+  grid-row: span 1;
 }
 
 form .controllers label {
-    font-size: var(--fs-sm);
-    line-height: var(--lh-sm);
-    font-weight: var(var(--fw-bold));
-    letter-spacing: var(--ls-sm);
-    color: var(--txt-black);
-    margin-bottom: calc(var(--spacing)*1);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  font-weight: var(var(--fw-bold));
+  letter-spacing: var(--ls-sm);
+  color: var(--txt-black);
+  margin-bottom: calc(var(--spacing)*1);
 }
 
 form .controllers select {
-    background-color: transparent;
-    font-size: var(--fs-sm);
-    line-height: var(--lh-sm);
-    font-weight: var(var(--fw-bold));
-    letter-spacing: var(--ls-sm);
-    opacity: 0.8;
+  background-color: transparent;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  font-weight: var(var(--fw-bold));
+  letter-spacing: var(--ls-sm);
+  opacity: 0.8;
 }
 
 form .controllers input, select {
-    border: 1px solid var(--border);
-    border-radius: var(--br-lg);
-    padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
-    cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: var(--br-lg);
+  padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
+  cursor: pointer;
 }
 
 form .controllers input:focus, select:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--teal);
-    border: none;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--teal);
+  border: none;
+}
+
+form .controllers .red-border,
+form input[type="email"]:user-invalid,
+form input[type="password"]:user-invalid {
+  box-shadow: 0 0 0 1px var(--red);
+  border: none;
+}
+
+form .controllers .green-border,
+form input[type="email"]:user-valid,
+form input[type="password"]:user-valid {
+  box-shadow: 0 0 0 1px var(--green);
+  border: none;
+}
+
+form .error:empty {
+  display: none;
+}
+
+form .error {
+  color: var(--red);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  font-weight: var(var(--fw-bold));
+  letter-spacing: var(--ls-sm);
+}
+
+form .error.active{
+  padding: calc(var(--spacing)*0.5) 0;
 }
 
 form .submit input {
-    width: var(--container-full);
-    border: none;
-    background-color: var(--dark-teal);
-    color: var(--white);
-    font-size: var(--fs-lg);
-    line-height: var(--lh-lg);
-    font-weight: var(var(--fw-bold));
-    letter-spacing: var(--ls-lg);
-    padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
-    border-radius: var(--br-lg);
-    cursor: pointer;
-    transition: .3s ease-in-out;
+  width: var(--container-full);
+  border: none;
+  background-color: var(--dark-teal);
+  color: var(--white);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-lg);
+  font-weight: var(var(--fw-bold));
+  letter-spacing: var(--ls-lg);
+  padding: calc(var(--spacing)*0.5) calc(var(--spacing)*2);
+  border-radius: var(--br-lg);
+  cursor: pointer;
+  transition: .3s ease-in-out;
 }
 
 form .submit input:hover {
-    transform: translateY(-1.5px);
-    background-color: #245665;
+  transform: translateY(-1.5px);
+  background-color: #245665;
+}
+
+form .submit input:focus-visible {
+  outline: none;
+  border: none;
+}
+
+@media (max-width: 455px){
+  form .controllers .join {
+    grid-template-columns: 1fr;
+  }
+
+  form .controllers .join div {
+    display: grid;
+    grid-template-rows: min-content;
+  }
+
+  form .controllers .join div select {
+    padding: calc(var(--spacing) * 1.585) calc(var(--spacing) * 2);
+  }
 }
