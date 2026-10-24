@@ -52,7 +52,7 @@ class DomManipulation {
                         let validation = FormValidation.checkPostalCode(select, input);
 
                         if(validation != true) {
-                            this.displayErrorMessage(input, result)
+                            this.displayErrorMessage(input, validation)
                             result = true;
                         }else{
                             this.removeErrorMessage(input)
