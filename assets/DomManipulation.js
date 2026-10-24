@@ -5,7 +5,8 @@ class DomManipulation {
     static addEventListenners() {
         const inputs = document.querySelectorAll("input[type='email'], input[type='text'], input[type='password']");
         const select = document.querySelector("select");
-        const submit = document.querySelector("input[type='submit']");
+        const submit = document.querySelector("input[name='send']");
+        const form = document.querySelector("form");
 
         inputs.forEach((input)=> {
             input.addEventListener("input", (event)=>{
@@ -20,6 +21,8 @@ class DomManipulation {
         submit.addEventListener("click", (event)=>{
             event.preventDefault();
 
+            let result;
+
             const inputs = document.querySelectorAll("input[type='email'], input[type='text'], input[type='password']");
             const select = document.querySelector("select");
 
@@ -29,67 +32,62 @@ class DomManipulation {
                     //if the user doesnt insert or insert a invalid email show error message
                     if(FormValidation.checkRequired(input)) {
                         this.displayErrorMessage(input, input.dataset.required);
+                        result = true;
                     }else if (FormValidation.checkMisMatch(input)){
                         this.displayErrorMessage(input, input.dataset.mismatch);
+                        result = true;
                     }else{
-                        console.log(FormValidation.checkMisMatch(input))
                         this.removeErrorMessage(input);
+                        result = false;
                     }
 
                 //check text input
                 }else if(input.type == "text") {
                     if(select.value == ""){
                         this.displayErrorMessage(select, select.dataset.invalid);
+                        result = true;
                     }else{
                         this.removeErrorMessage(select)
 
-                        let result = FormValidation.checkPostalCode(select, input);
+                        let validation = FormValidation.checkPostalCode(select, input);
 
-                        if(result != true) {
+                        if(validation != true) {
                             this.displayErrorMessage(input, result)
+                            result = true;
                         }else{
                             this.removeErrorMessage(input)
+                            result = false;
                         }
                     }
                 //check password input
                 }else {
                     if(FormValidation.checkRequired(input)) {
                         this.displayErrorMessage(input, input.dataset.required);
+                        result = true;
                     }else if (FormValidation.checkLength(input)){
                         this.displayErrorMessage(input, input.dataset.short);
+                        result = true;
                     }else if(input.id == "passconf") {
                         const password = document.querySelector("input[id='password']").value;
 
                         if(FormValidation.checkPassValues(password, input.value)){
                             this.removeErrorMessage(input);
+                            result = false;
                         }else{
                             this.displayErrorMessage(input, input.dataset.different);
+                            result = true;
                         }
                     } 
                     else{
                         this.removeErrorMessage(input);
+                        result = false;
                     }
                 }
             })
-            
-            // const inputElement = document.querySelector("input[type='text']");
 
-            // if(select.value == ""){
-            //     this.displayErrorMessage(select, select.dataset.invalid);
-            //     this.removeErrorMessage(inputElement)
-            // }else{
-            //     this.removeErrorMessage(select)
-
-            //     let result = FormValidation.checkPostalCode(select, inputElement);
-
-            //     if(inputElement.value.length > 0) {
-            //         if(result != true) {
-            //             this.displayErrorMessage(inputElement, result)
-            //         }else{
-            //             this.removeErrorMessage(inputElement)
-            //         }
-            //     }
-            // }
+            if(!result){
+                form.submit();
+            }
 
         })
 
@@ -97,50 +95,61 @@ class DomManipulation {
 
     static checkInput(event, select){  
         //check email input
+        let result;
         if(event.target.type == "email") {
 
             //if the user doesnt insert or insert a invalid email show error message
             if(FormValidation.checkRequired(event.target)) {
                 this.displayErrorMessage(event.target, event.target.dataset.required);
+                result = true;
             }else if (FormValidation.checkMisMatch(event.target)){
                 this.displayErrorMessage(event.target, event.target.dataset.mismatch);
+                result = true;
             }else{
-                console.log(FormValidation.checkMisMatch(event.target))
                 this.removeErrorMessage(event.target);
+                result = false;
             }
 
         //check text input
         }else if(event.target.type == "text") {
             if(select.value == ""){
                 this.displayErrorMessage(select, select.dataset.invalid);
+                result = true;
             }else{
                 this.removeErrorMessage(select)
 
-                let result = FormValidation.checkPostalCode(select, event.target);
+                let validation = FormValidation.checkPostalCode(select, event.target);
 
-                if(result != true) {
-                    this.displayErrorMessage(event.target, result)
+                if(validation != true) {
+                    this.displayErrorMessage(event.target, validation)
+                    result = true;
                 }else{
                     this.removeErrorMessage(event.target)
+                    result = false;
                 }
             }
         //check password input
         }else {
             if(FormValidation.checkRequired(event.target)) {
                 this.displayErrorMessage(event.target, event.target.dataset.required);
+                result = true;
             }else if (FormValidation.checkLength(event.target)){
                 this.displayErrorMessage(event.target, event.target.dataset.short);
+                result = true;
             }else if(event.target.id == "passconf") {
                 const password = document.querySelector("input[id='password']").value;
 
                 if(FormValidation.checkPassValues(password, event.target.value)){
                     this.removeErrorMessage(event.target);
+                    result = false;
                 }else{
                     this.displayErrorMessage(event.target, event.target.dataset.different);
+                    result = true;
                 }
             } 
             else{
                 this.removeErrorMessage(event.target);
+                result = false;
             }
         }
     }
