@@ -80,6 +80,9 @@ class DomManipulation {
                             result += true;
                         }
                     }else if(event.target.id == "password") {
+
+                        this.removeErrorMessage(event.target);
+
                         const passconf = document.querySelector("input[id='passconf']").value;
                         const passconfE = document.querySelector("input[id='passconf']");
 
@@ -167,10 +170,14 @@ class DomManipulation {
                     result = true;
                 }
             }else if(event.target.id == "password") {
+
+                this.removeErrorMessage(event.target);
+
                 const passconf = document.querySelector("input[id='passconf']").value;
                 const passconfE = document.querySelector("input[id='passconf']");
 
                 if(FormValidation.checkPassValues(passconf, event.target.value)){
+                    alert(1);
                     this.removeErrorMessage(event.target);
                     this.removeErrorMessage(passconfE);
                     result = false;

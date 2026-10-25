@@ -267,6 +267,7 @@ form .controllers .red-border,
 form input[type="email"]:user-invalid,
 form input[type="password"]:user-invalid {
   box-shadow: 0 0 0 1px var(--red) !important;
+  border: 1px solid var(--red);
   border: none;
 }
 
@@ -274,6 +275,7 @@ form .controllers .green-border,
 form input[type="email"]:user-valid,
 form input[type="password"]:user-valid {
   box-shadow: 0 0 0 1px var(--green);
+  border: 1px solid var(--green);
   border: none;
 }
 
