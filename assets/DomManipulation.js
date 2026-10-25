@@ -45,7 +45,7 @@ class DomManipulation {
                 }else if(input.type == "text") {
                     if(select.value == ""){
                         this.displayErrorMessage(select, select.dataset.invalid);
-                        result = true;
+                        result += true;
                     }else{
                         this.removeErrorMessage(select)
 
@@ -53,36 +53,36 @@ class DomManipulation {
 
                         if(validation != true) {
                             this.displayErrorMessage(input, validation)
-                            result = true;
+                            result += true;
                         }else{
                             this.removeErrorMessage(input)
-                            result = false;
+                            result += false;
                         }
                     }
                 //check password input
                 }else {
                     if(FormValidation.checkRequired(input)) {
                         this.displayErrorMessage(input, input.dataset.required);
-                        result = true;
+                        result += true;
                     }else if (FormValidation.checkLength(input)){
                         this.displayErrorMessage(input, input.dataset.short);
-                        result = true;
+                        result += true;
                     }else if(input.id == "passconf") {
                         const password = document.querySelector("input[id='password']").value;
 
                         if(FormValidation.checkPassValues(password, input.value)){
                             this.removeErrorMessage(input);
                             event.target.className = "green-border";
-                            result = false;
+                            result += false;
                         }else{
                             this.displayErrorMessage(input, input.dataset.different);
                             event.target.className = "red-border";
-                            result = true;
+                            result += true;
                         }
                     } 
                     else{
                         this.removeErrorMessage(input);
-                        result = false;
+                        result += false;
                     }
                 }
             })
