@@ -79,8 +79,21 @@ class DomManipulation {
                             event.target.className = "red-border";
                             result += true;
                         }
-                    } 
-                    else{
+                    }else if(event.target.id == "password") {
+                        const passconf = document.querySelector("input[id='passconf']").value;
+                        const passconfE = document.querySelector("input[id='passconf']");
+
+                        if(FormValidation.checkPassValues(passconf, event.target.value)){
+                            this.removeErrorMessage(event.target);
+                            this.removeErrorMessage(passconfE);
+                            result += false;
+                            passconfE.className = "green-border";
+                        }else{
+                            this.displayErrorMessage(passconfE, passconfE.dataset.different);
+                            passconfE.className = "red-border";
+                            result += true;
+                        }
+                    } else{
                         this.removeErrorMessage(input);
                         result += false;
                     }
@@ -151,6 +164,20 @@ class DomManipulation {
                 }else{
                     this.displayErrorMessage(event.target, event.target.dataset.different);
                     event.target.className = "red-border";
+                    result = true;
+                }
+            }else if(event.target.id == "password") {
+                const passconf = document.querySelector("input[id='passconf']").value;
+                const passconfE = document.querySelector("input[id='passconf']");
+
+                if(FormValidation.checkPassValues(passconf, event.target.value)){
+                    this.removeErrorMessage(event.target);
+                    this.removeErrorMessage(passconfE);
+                    result = false;
+                    passconfE.className = "green-border";
+                }else{
+                    this.displayErrorMessage(passconfE, passconfE.dataset.different);
+                    passconfE.className = "red-border";
                     result = true;
                 }
             } 
